@@ -1,0 +1,36 @@
+# Node
+node_modules/
+dist/
+.tmp/
+.temp/
+coverage/
+.nyc_output/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Env
+.env
+**/.env
+.env.local
+
+# Build outputs
+admin/dist/
+app/dist/
+server/dist/
+
+# Data
+/data/
+**/data/*.db
+
+# Husky
+.husky/_/
