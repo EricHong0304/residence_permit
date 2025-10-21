@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 24px; }
+      input, button { padding: 8px; margin: 4px 0; }
+      .ok { color: green; }
+      .fail { color: red; }
+      .hint { color: #666; }
+      form { max-width: 320px; }
+      label { display: block; margin-top: 8px; }
+    </style>
+  </head>
+  <body>
+    <h1>管理端登录</h1>
+    <p class="hint">默认账号：admin / admin（建议首次登录后修改密码）</p>
+
+    <form id="loginForm">
+      <label>
+        用户名
+        <input id="u" value="admin" />
+      </label>
+      <label>
+        密码
+        <input id="p" type="password" value="admin" />
+      </label>
+      <button type="submit">登录</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
