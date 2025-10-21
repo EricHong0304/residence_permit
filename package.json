@@ -12,7 +12,9 @@
     "build": "npm --workspace server run build && npm --workspace admin run build && npm --workspace app run build",
     "start:server": "npm --workspace server run start:dev",
     "dev:admin": "npm --workspace admin run dev",
-    "dev:app": "npm --workspace app run dev"
+    "dev:app": "npm --workspace app run dev",
+    "preview:admin": "npm --workspace admin run preview",
+    "preview:app": "npm --workspace app run preview"
   },
   "lint-staged": {
     "*.{js,ts,vue,css,scss,md,json,yml,yaml}": ["prettier --write"],
