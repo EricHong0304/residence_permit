@@ -12,10 +12,10 @@ function createStatsRouter({ db, authenticate }) {
       const permitSummary = db.prepare(`
         SELECT
           COUNT(*) AS total,
-          SUM(CASE WHEN status = 'active' THEN 1 ELSE 0) AS active,
-          SUM(CASE WHEN status = 'expired' THEN 1 ELSE 0) AS expired,
-          SUM(CASE WHEN status = 'revoked' THEN 1 ELSE 0) AS revoked,
-          SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0) AS pending
+          SUM(CASE WHEN status = 'active' THEN 1 ELSE 0 END) AS active,
+          SUM(CASE WHEN status = 'expired' THEN 1 ELSE 0 END) AS expired,
+          SUM(CASE WHEN status = 'revoked' THEN 1 ELSE 0 END) AS revoked,
+          SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending
         FROM permit_records
       `).get();
 
@@ -42,10 +42,10 @@ function createStatsRouter({ db, authenticate }) {
         SELECT
           date(issued_at) AS day,
           COUNT(*) AS total,
-          SUM(CASE WHEN status = 'active' THEN 1 ELSE 0) AS active,
-          SUM(CASE WHEN status = 'expired' THEN 1 ELSE 0) AS expired,
-          SUM(CASE WHEN status = 'revoked' THEN 1 ELSE 0) AS revoked,
-          SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0) AS pending
+          SUM(CASE WHEN status = 'active' THEN 1 ELSE 0 END) AS active,
+          SUM(CASE WHEN status = 'expired' THEN 1 ELSE 0 END) AS expired,
+          SUM(CASE WHEN status = 'revoked' THEN 1 ELSE 0 END) AS revoked,
+          SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending
         FROM permit_records
         WHERE issued_at BETWEEN ? AND ?
         GROUP BY day
@@ -87,10 +87,10 @@ function createStatsRouter({ db, authenticate }) {
             stations.id AS station_id,
             stations.name AS station_name,
             COUNT(permit_records.id) AS total,
-            SUM(CASE WHEN permit_records.status = 'active' THEN 1 ELSE 0) AS active,
-            SUM(CASE WHEN permit_records.status = 'expired' THEN 1 ELSE 0) AS expired,
-            SUM(CASE WHEN permit_records.status = 'revoked' THEN 1 ELSE 0) AS revoked,
-            SUM(CASE WHEN permit_records.status = 'pending' THEN 1 ELSE 0) AS pending
+            SUM(CASE WHEN permit_records.status = 'active' THEN 1 ELSE 0 END) AS active,
+            SUM(CASE WHEN permit_records.status = 'expired' THEN 1 ELSE 0 END) AS expired,
+            SUM(CASE WHEN permit_records.status = 'revoked' THEN 1 ELSE 0 END) AS revoked,
+            SUM(CASE WHEN permit_records.status = 'pending' THEN 1 ELSE 0 END) AS pending
           FROM stations
           LEFT JOIN permit_records ON permit_records.station_id = stations.id
           GROUP BY stations.id
@@ -144,10 +144,10 @@ function createStatsRouter({ db, authenticate }) {
       const summary = db.prepare(`
         SELECT
           COUNT(*) AS total,
-          SUM(CASE WHEN status = 'active' THEN 1 ELSE 0) AS active,
-          SUM(CASE WHEN status = 'expired' THEN 1 ELSE 0) AS expired,
-          SUM(CASE WHEN status = 'revoked' THEN 1 ELSE 0) AS revoked,
-          SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0) AS pending
+          SUM(CASE WHEN status = 'active' THEN 1 ELSE 0 END) AS active,
+          SUM(CASE WHEN status = 'expired' THEN 1 ELSE 0 END) AS expired,
+          SUM(CASE WHEN status = 'revoked' THEN 1 ELSE 0 END) AS revoked,
+          SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending
         FROM permit_records
         WHERE date(issued_at) = ?
       `).get(dateString);
